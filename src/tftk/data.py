@@ -261,8 +261,8 @@ def _get_correlated_sets(ts_df: pd.DataFrame) -> List[Set[str]]:
     num_pairs = len(corr2)
 
     # Get the correlated sets
-    level1_labels = corr2.index.levels[0][corr2.index.labels[0]]
-    level2_labels = corr2.index.levels[1][corr2.index.labels[1]]
+    level1_labels = corr2.index.get_level_values(0)
+    level2_labels = corr2.index.get_level_values(1)
     correlated_pairs: List[Set[str]] = []
     for i in range(num_pairs):
         current_pair = set((level1_labels[i], level2_labels[i]))
